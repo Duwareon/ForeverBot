@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import discord
+import typing
 from discord.ext import commands
 import os
 import random
@@ -17,7 +18,7 @@ async def on_ready():
 
 
 @bot.command()
-async def hug(ctx, arg1, gif):
+async def hug(ctx, arg1, gif: typing.Optional[str] = "mf"):
     await ctx.send("{0.author} hugged {1}".format(ctx, arg1))
 
     if gif == "mm":
@@ -31,7 +32,7 @@ async def hug(ctx, arg1, gif):
 
 
 @bot.command()
-async def kiss(ctx, arg1, gif):
+async def kiss(ctx, arg1, gif: typing.Optional[str] = "mf"):
     await ctx.send("{0.author} kissed {1}".format(ctx, arg1))
 
     if gif == "mm":
@@ -45,7 +46,7 @@ async def kiss(ctx, arg1, gif):
 
 
 @bot.command()
-async def cuddle(ctx, arg1, gif):
+async def cuddle(ctx, arg1, gif: typing.Optional[str] = "mf"):
     await ctx.send("{0.author} cuddled {1}".format(ctx, arg1))
 
     if gif == "mm":
