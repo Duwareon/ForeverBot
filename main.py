@@ -19,17 +19,42 @@ async def on_ready():
 @bot.command()
 async def hug(ctx, arg1, gif):
     await ctx.send("{0.author} hugged {1}".format(ctx, arg1))
-    await sendGif(ctx, gif)
 
-
-async def sendGif(ctx, gif):
     if gif == "mm":
-        await ctx.send(random.choice(gifs.hugmf))
+        await ctx.send(random.choice(gifs.hugmm))
 
     if gif == "mf":
         await ctx.send(random.choice(gifs.hugmf))
 
     if gif == "ff":
         await ctx.send(random.choice(gifs.hugff))
+
+
+@bot.command()
+async def kiss(ctx, arg1, gif):
+    await ctx.send("{0.author} kissed {1}".format(ctx, arg1))
+
+    if gif == "mm":
+        await ctx.send(random.choice(gifs.kissmm))
+
+    if gif == "mf":
+        await ctx.send(random.choice(gifs.kissmf))
+
+    if gif == "ff":
+        await ctx.send(random.choice(gifs.kissff))
+
+
+@bot.command()
+async def cuddle(ctx, arg1, gif):
+    await ctx.send("{0.author} cuddled {1}".format(ctx, arg1))
+
+    if gif == "mm":
+        await ctx.send(random.choice(gifs.cuddlemm))
+
+    if gif == "mf":
+        await ctx.send(random.choice(gifs.cuddlemf))
+
+    if gif == "ff":
+        await ctx.send(random.choice(gifs.cuddleff))
 
 bot.run(os.getenv("TOKEN"))
