@@ -24,11 +24,14 @@ async def hug(ctx, arg1, gif: typing.Optional[str] = "mf"):
     if gif == "mm":
         await ctx.send(random.choice(gifs.hugmm))
 
-    if gif == "mf":
+    elif gif == "mf":
         await ctx.send(random.choice(gifs.hugmf))
 
-    if gif == "ff":
+    elif gif == "ff":
         await ctx.send(random.choice(gifs.hugff))
+
+    else:
+        await ctx.send(random.choice(gifs.hugmf))
 
 
 @bot.command()
@@ -38,11 +41,14 @@ async def kiss(ctx, arg1, gif: typing.Optional[str] = "mf"):
     if gif == "mm":
         await ctx.send(random.choice(gifs.kissmm))
 
-    if gif == "mf":
+    elif gif == "mf":
         await ctx.send(random.choice(gifs.kissmf))
 
-    if gif == "ff":
+    elif gif == "ff":
         await ctx.send(random.choice(gifs.kissff))
+
+    else:
+        await ctx.send(random.choice(gifs.kissmf))
 
 
 @bot.command()
@@ -52,10 +58,13 @@ async def cuddle(ctx, arg1, gif: typing.Optional[str] = "mf"):
     if gif == "mm":
         await ctx.send(random.choice(gifs.cuddlemm))
 
-    if gif == "mf":
+    elif gif == "mf":
         await ctx.send(random.choice(gifs.cuddlemf))
 
-    if gif == "ff":
+    elif gif == "ff":
         await ctx.send(random.choice(gifs.cuddleff))
+
+    else:
+        await ctx.send(random.choice(gifs.cuddlemf))
 
 bot.run(os.getenv("TOKEN"))
