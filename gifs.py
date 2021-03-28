@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 kissff = ["https://tenor.com/view/anime-lesbian-kiss-gif-14497632", "https://tenor.com/view/anime-love-girls-kissing-gif-17708192", "https://tenor.com/view/kiss-kissing-anime-gif-4883557", "https://tenor.com/view/kiss-anime-blush-shock-kissing-gif-16741492", "https://tenor.com/view/anime-love-girls-kissing-heart-gif-17708194", "https://tenor.com/view/anime-girls-kiss-kissing-shocked-gif-17708469",
           "https://tenor.com/view/anime-love-girls-kissing-blush-gif-17708195", "https://tenor.com/view/get-to-work-gif-18996170", "https://tenor.com/view/yuri-kiss-anime-blushed-gif-17050283", "https://tenor.com/view/girl-anime-kiss-anime-i-love-you-girl-kiss-gif-14375355", "https://tenor.com/view/sound-of-poggers-poggers-anime-anime-poggers-charr-gif-18348699"]
 
