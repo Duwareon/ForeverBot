@@ -19,10 +19,16 @@ class GifManager():
 
     def get_gifs(self, action, gender: t.Optional[str] = '*'):
         self.cur = self.conn.cursor()
-
-        self.cur.execute(
-            'SELECT link FROM GIFS WHERE action = ? AND gender = ?',
-            (action, gender,)
-        )
+        check = {"ff", "mf", "mm"}
+        if any(ext in gender for ext in check):
+            self.cur.execute(
+                'SELECT link FROM GIFS WHERE action = ? AND gender = ?',
+                (action, gender,)
+            )
+        else:
+            self.cur.execute(
+                'SELECT link FROM GIFS WHERE action = ?',
+                (action,)
+            )
 
         return self.cur.fetchall()
