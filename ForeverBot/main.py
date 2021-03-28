@@ -39,11 +39,11 @@ async def hug(ctx, arg1, gif: typing.Optional[str] = "*"):
         await ctx.send(incorrectPingErrMsg)
 
 
-@ bot.command()
+@bot.command()
 async def kiss(ctx, arg1, gif):
 
     if arg1.startswith("<@!") and arg1.endswith(">"):
-        await act(ctx, "hug", "hugged", gif, arg1)
+        await act(ctx, "kiss", "kissed", gif, arg1)
 
     elif "<@!" in ctx.message.content and ">" in ctx.message.content:
         await ctx.send("the command format is \"{}kiss [user] [mm/mf/ff]\"".format(bot.command_prefix))
@@ -51,10 +51,10 @@ async def kiss(ctx, arg1, gif):
         await ctx.send(incorrectPingErrMsg)
 
 
-@ bot.command()
+@bot.command()
 async def cuddle(ctx, arg1, gif: typing.Optional[str] = "*"):
     if arg1.startswith("<@!") and arg1.endswith(">"):
-        await act(ctx, "hug", "hugged", gif, arg1)
+        await act(ctx, "cuddle", "cuddled", gif, arg1)
 
     elif "<@!" in ctx.message.content and ">" in ctx.message.content:
         await ctx.send("the command format is \"{}cuddle [user] [mm/mf/ff]\"".format(bot.command_prefix))
