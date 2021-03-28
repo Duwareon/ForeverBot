@@ -18,8 +18,8 @@ man = db.GifManager()
 
 async def act(ctx, action, pasttense, gender, arg1):
     await ctx.send("<@!{0}> {1} {2}".format(ctx.author.id, pasttense, arg1))
-    x = man.get_gifs(action, gender)
-    await ctx.send(random.choice(x)[0])
+    x = random.choice(man.get_gifs(action, gender))[0]
+    await ctx.send(x)
 
 
 @bot.event
@@ -29,6 +29,7 @@ async def on_ready():
 
 @bot.command()
 async def hug(ctx, arg1, gif: typing.Optional[str] = "*"):
+
     if arg1.startswith("<@!") and arg1.endswith(">"):
         await act(ctx, "hug", "hugged", gif, arg1)
 

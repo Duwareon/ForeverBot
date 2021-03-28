@@ -3,6 +3,7 @@ import sqlite3 as sql
 from sqlite3 import Error
 import typing as t
 import gifs
+import random  # remove this when done testing
 
 
 class GifManager():
@@ -23,7 +24,7 @@ class GifManager():
         if any(ext in gender for ext in check):
             self.cur.execute(
                 'SELECT link FROM GIFS WHERE action = ? AND gender = ?',
-                (action, gender,)
+                (action, gender)
             )
         else:
             self.cur.execute(
@@ -31,5 +32,4 @@ class GifManager():
                 (action,)
             )
 
-        print(self.cur.fetchall())
         return self.cur.fetchall()
