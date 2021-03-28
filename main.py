@@ -19,8 +19,8 @@ man = db.GifManager()
 
 async def act(ctx, action, pasttense, gender, arg1):
     await ctx.send("<@!{0}> {1} {2}".format(ctx.author.id, pasttense, arg1))
-
-    await ctx.send(random.choice(man.get_gifs(action, gender)))
+    x = man.get_gifs(action, gender)
+    await ctx.send(random.choice(x)[0])
 
 
 @bot.event

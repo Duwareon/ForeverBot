@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sqlite3 as sql
 from sqlite3 import Error
-from typing import Optional
+import typing as t
 import gifs
 
 
@@ -17,14 +17,12 @@ class GifManager():
 
         print("connection complete")
 
-    def get_gifs(self, action, gender: Optional[str] = "*"):
-        cur = self.conn.cursor()
+    def get_gifs(self, action, gender: t.Optional[str] = '*'):
+        self.cur = self.conn.cursor()
 
-        cur.execute(
-            self.conn(
-                "SELECT link FROM GIFS WHERE action = '{0}' AND gender = '{1}'".format(
-                    action, gender)))
+        self.cur.execute(
+            'SELECT link FROM GIFS WHERE action = ? AND gender = ?',
+            (action, gender,)
+        )
 
-        links = cur.fetchall()
-
-        return links[0]
+        return self.cur.fetchall()
