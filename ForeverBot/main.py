@@ -39,7 +39,7 @@ async def hug(ctx, arg1, gif: typing.Optional[str] = "*"):
 
 
 @bot.command()
-async def kiss(ctx, arg1, gif):
+async def kiss(ctx, arg1, gif: typing.Optional[str] = "*"):
 
     if arg1.startswith("<@!") and arg1.endswith(">"):
         await act(ctx, "kiss", "kissed", gif, arg1)
@@ -52,6 +52,7 @@ async def kiss(ctx, arg1, gif):
 
 @bot.command()
 async def cuddle(ctx, arg1, gif: typing.Optional[str] = "*"):
+
     if arg1.startswith("<@!") and arg1.endswith(">"):
         await act(ctx, "cuddle", "cuddled", gif, arg1)
 

@@ -57,8 +57,8 @@ set_gif_loop(hugff, "ff", "hug")
 set_gif_loop(hugmf, "mf", "hug")
 set_gif_loop(hugmm, "mm", "hug")
 
-set_gif_loop(kissff, "ff", "kiss")
-set_gif_loop(kissmf, "mf", "kiss")
-set_gif_loop(kissmm, "mm", "kiss")
+set_gif_loop(cuddleff, "ff", "cuddle")
+set_gif_loop(cuddlemf, "mf", "cuddle")
+set_gif_loop(cuddlemm, "mm", "cuddle")
 
 conn.commit()

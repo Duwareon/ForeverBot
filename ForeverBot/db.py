@@ -31,4 +31,5 @@ class GifManager():
                 (action,)
             )
 
+        print(self.cur.fetchall())
         return self.cur.fetchall()
