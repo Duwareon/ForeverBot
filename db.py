@@ -21,7 +21,7 @@ class GifManager():
         cur = self.conn.cursor()
 
         cur.execute(
-            self.conn.escape_string(
+            self.conn(
                 "SELECT link FROM GIFS WHERE action = '{0}' AND gender = '{1}'".format(
                     action, gender)))
 
