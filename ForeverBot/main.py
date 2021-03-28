@@ -4,7 +4,6 @@ import typing
 from discord.ext import commands
 import os
 import random
-import gifs
 import db
 from dotenv import load_dotenv
 
