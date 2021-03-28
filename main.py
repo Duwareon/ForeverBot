@@ -5,6 +5,7 @@ from discord.ext import commands
 import os
 import random
 import gifs
+import db
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -13,6 +14,13 @@ load_dotenv()
 bot = commands.Bot(command_prefix='!')
 
 incorrectPingErrMsg = "ping a user ya donkass"
+man = db.GifManager()
+
+
+async def act(ctx, action, pasttense, gender, arg1):
+    await ctx.send("<@!{0}> {1} {2}".format(ctx.author.id, pasttense, arg1))
+
+    await ctx.send(random.choice(man.get_gifs(action, gender)))
 
 
 @bot.event
@@ -21,21 +29,10 @@ async def on_ready():
 
 
 @bot.command()
-async def hug(ctx, arg1, gif: typing.Optional[str] = "mf"):
+async def hug(ctx, arg1, gif: typing.Optional[str] = "*"):
     if arg1.startswith("<@!") and arg1.endswith(">"):
-        await ctx.send("<@!{0}> hugged {1}".format(ctx.author.id, arg1))
+        await act(ctx, "hug", "hugged", gif, arg1)
 
-        if gif == "mm":
-            await ctx.send(random.choice(gifs.hugmm))
-
-        elif gif == "mf":
-            await ctx.send(random.choice(gifs.hugmf))
-
-        elif gif == "ff":
-            await ctx.send(random.choice(gifs.hugff))
-
-        else:
-            await ctx.send(random.choice(gifs.hugmf))
     elif "<@!" in ctx.message.content and ">" in ctx.message.content:
         await ctx.send("the command format is \"{}hug [user] [mm/mf/ff]\"".format(bot.command_prefix))
     else:
@@ -43,45 +40,21 @@ async def hug(ctx, arg1, gif: typing.Optional[str] = "mf"):
 
 
 @ bot.command()
-async def kiss(ctx, arg1, gif: typing.Optional[str] = "mf"):
+async def kiss(ctx, arg1, gif):
+
     if arg1.startswith("<@!") and arg1.endswith(">"):
-        await ctx.send("<@!{0}> kissed {1}".format(ctx.author.id, arg1))
-
-        if gif == "mm":
-            await ctx.send(random.choice(gifs.kissmm))
-
-        elif gif == "mf":
-            await ctx.send(random.choice(gifs.kissmf))
-
-        elif gif == "ff":
-            await ctx.send(random.choice(gifs.kissff))
-
-        else:
-            await ctx.send(random.choice(gifs.kissmf))
+        await act(ctx, "hug", "hugged", gif, arg1)
 
     elif "<@!" in ctx.message.content and ">" in ctx.message.content:
         await ctx.send("the command format is \"{}kiss [user] [mm/mf/ff]\"".format(bot.command_prefix))
-
     else:
         await ctx.send(incorrectPingErrMsg)
 
 
 @ bot.command()
-async def cuddle(ctx, arg1, gif: typing.Optional[str] = "mf"):
+async def cuddle(ctx, arg1, gif: typing.Optional[str] = "*"):
     if arg1.startswith("<@!") and arg1.endswith(">"):
-        await ctx.send("<@!{0}> cuddled {1}".format(ctx.author.id, arg1))
-
-        if gif == "mm":
-            await ctx.send(random.choice(gifs.cuddlemm))
-
-        elif gif == "mf":
-            await ctx.send(random.choice(gifs.cuddlemf))
-
-        elif gif == "ff":
-            await ctx.send(random.choice(gifs.cuddleff))
-
-        else:
-            await ctx.send(random.choice(gifs.cuddlemf))
+        await act(ctx, "hug", "hugged", gif, arg1)
 
     elif "<@!" in ctx.message.content and ">" in ctx.message.content:
         await ctx.send("the command format is \"{}cuddle [user] [mm/mf/ff]\"".format(bot.command_prefix))

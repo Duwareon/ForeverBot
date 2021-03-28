@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import sqlite3 as sql
+import os
 kissff = ["https://tenor.com/view/anime-lesbian-kiss-gif-14497632", "https://tenor.com/view/anime-love-girls-kissing-gif-17708192", "https://tenor.com/view/kiss-kissing-anime-gif-4883557", "https://tenor.com/view/kiss-anime-blush-shock-kissing-gif-16741492", "https://tenor.com/view/anime-love-girls-kissing-heart-gif-17708194", "https://tenor.com/view/anime-girls-kiss-kissing-shocked-gif-17708469",
           "https://tenor.com/view/anime-love-girls-kissing-blush-gif-17708195", "https://tenor.com/view/get-to-work-gif-18996170", "https://tenor.com/view/yuri-kiss-anime-blushed-gif-17050283", "https://tenor.com/view/girl-anime-kiss-anime-i-love-you-girl-kiss-gif-14375355", "https://tenor.com/view/sound-of-poggers-poggers-anime-anime-poggers-charr-gif-18348699"]
 
@@ -25,6 +27,38 @@ cuddlemf = ["https://tenor.com/view/goodnight-bed-love-cuddle-hug-gif-12887276",
 cuddlemm = ["https://tenor.com/view/gay-yaoi-love-anime-cuddle-gif-9556155", "https://tenor.com/view/gay-gay-cuddle-sweet-gif-15575523", "https://tenor.com/view/bl-anime-cuddle-boys-love-sweet-gif-17215891",
             "https://tenor.com/view/bed-gif-4553601", "https://tenor.com/view/nezumi-in-love-shion-no9-two-gif-11562536", "https://tenor.com/view/yaoi-anime-boy-gif-9124287"]
 
-kiss = [kissff, kissmf, kissmm]
-hug = [hugff, hugmf, hugmm]
-cuddle = [cuddleff, cuddlemf, cuddlemm]
+
+os.remove("gifs.db")
+conn = sql.connect("gifs.db")
+
+conn.execute("""CREATE TABLE IF NOT EXISTS GIFS(
+            id integer PRIMARY KEY,
+            link text NOT NULL,
+            gender text,
+            action text
+        )""")
+
+
+def set_gifs(link, gender, action):
+    conn.execute(
+        "INSERT INTO GIFS(link, gender, action) VALUES('{0}', '{1}', '{2}');".format(link, gender, action))
+
+
+def set_gif_loop(arr, gender, action):
+    for i in range(len(arr)):
+        set_gifs(arr[i], gender, action)
+
+
+set_gif_loop(kissff, "ff", "kiss")
+set_gif_loop(kissmf, "mf", "kiss")
+set_gif_loop(kissmm, "mm", "kiss")
+
+set_gif_loop(hugff, "ff", "hug")
+set_gif_loop(hugmf, "mf", "hug")
+set_gif_loop(hugmm, "mm", "hug")
+
+set_gif_loop(kissff, "ff", "kiss")
+set_gif_loop(kissmf, "mf", "kiss")
+set_gif_loop(kissmm, "mm", "kiss")
+
+conn.commit()
